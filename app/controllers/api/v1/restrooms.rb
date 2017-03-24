@@ -12,11 +12,13 @@ module API
         params do
           optional :ada, type: Boolean, desc: "Only return restrooms that are ADA accessible."
           optional :unisex, type: Boolean, desc: "Only return restrooms that are unisex."
+          optional :public_access, type: String, desc: "Only return restrooms that are public access."
         end
         get do
           r = Restroom
           r = r.accessible if params[:ada].present?
           r = r.unisex if params[:unisex].present?
+          r = r.public_access if params[:public_access].present?
 
           paginate(r.order(created_at: :desc))
         end
@@ -25,12 +27,14 @@ module API
         params do
           optional :ada, type: Boolean, desc: "Only return restrooms that are ADA accessible."
           optional :unisex, type: Boolean, desc: "Only return restrooms that are unisex."
+          optional :public_access, type: String, desc: "Only return restrooms that are public access."
           requires :query, type: String, desc: "Your search query."
         end
         get :search do
           r = Restroom
           r = r.accessible if params[:ada].present?
           r = r.unisex if params[:unisex].present?
+          r = r.public_access if params[:public_access]=="open"
 
           paginate(r.text_search(params[:query]))
         end
@@ -39,6 +43,7 @@ module API
         params do
           optional :ada, type: Boolean, desc: "Only return restrooms that are ADA accessible."
           optional :unisex, type: Boolean, desc: "Only return restrooms that are unisex."
+          optional :public_access, type: String, desc: "Only return restrooms that are public access."
           requires :lat, type: Float, desc: "latitude"
           requires :lng, type: Float, desc: "longitude"
         end
@@ -46,6 +51,7 @@ module API
           r = Restroom
           r = r.accessible if params[:ada].present?
           r = r.unisex if params[:unisex]
+          r = r.public_access if params[:public_access]=="open"
           paginate(r.near([params[:lat], params[:lng]], 20, :order => 'distance'))
         end
 
@@ -53,6 +59,7 @@ module API
         params do
           optional :ada, type: Boolean, desc: "Only return restrooms that are ADA accessible."
           optional :unisex, type: Boolean, desc: "Only return restrooms that are unisex."
+          optional :public_access, type: String, desc: "Only return restrooms that are public access."
           optional :updated, type: Boolean, desc: "Return restroom records updated (rather than created) since given date"
           requires :day, type: Integer, desc: "Day"
           requires :month, type: Integer, desc: "Month"
@@ -68,6 +75,7 @@ module API
           end
           r = r.accessible if params[:ada].present?
           r = r.unisex if params[:unisex].present?
+          r = r.public_access if params[:public_access]=="open"
           paginate(r.order(created_at: :desc))
         end
       end

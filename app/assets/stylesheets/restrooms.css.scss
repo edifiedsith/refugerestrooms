@@ -70,21 +70,43 @@
         max-width: 100%;
     }
 
-    // ADA / Gender Neutral Filters
+    // ADA / Gender Neutral / Public Filters
     .itemExtraInfo {
         position: absolute;
         top: 20px;
         right: 15px;
     }
     .unisexRestroom {
+        display: inline;
         width: 45px;
         height: 43px;
+        margin-right: 10px;
     }
     .ADARestroom {
+        display: inline;
         width: 44px;
         height: 47px;
+        margin-right: 10px;
     }
-    .unisexRestroom img, .ADARestroom img {
+    .publicRestroom {
+      display: inline;
+      width: 45px;
+      height: 45px;
+      margin-right: 10px;
+    }
+    .customerRestroom {
+      display: inline;
+      width: 45px;
+      height: 45px;
+      margin-right: 10px;
+    }
+    .keyedRestroom {
+      display: inline;
+      width: 45px;
+      height: 45px;
+      margin-right: 10px;
+    }
+    .unisexRestroom img, .ADARestroom img, .publicRestroom img, .customerRestroom img, .keyedRestroom img {
         width: 100%;
         height: 100%;
     }

@@ -20,3 +20,11 @@ $ ->
       $('.listItem.no_changing_table').show()
     else
       $('.listItem.no_changing_table').hide()
+
+  $('#public_access_filter').click ->
+    if $(this).hasClass("active")
+      $('.listItem.customer').show()
+      $('.listItem.keyed').show()
+    else
+      $('.listItem.customer').hide()
+      $('.listItem.keyed').hide()

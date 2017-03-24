@@ -37,10 +37,13 @@ class Restroom < ActiveRecord::Base
     name + street + city + state + comment + directions + country
   }
 
+  enum public_access: {unknown: 0, open: 1, customer: 2, keyed: 3}
+
   after_find :strip_slashes
 
   scope :accessible, -> { where(accessible: true) }
   scope :unisex, -> { where(unisex: true) }
+  scope :public_access, -> {where(public_access: 1)}
 
   scope :created_since, ->(date) { where("created_at >= ?", date) }
   scope :updated_since, ->(date) { where("updated_at >= ?", date) }

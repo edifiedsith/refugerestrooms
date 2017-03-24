@@ -85,6 +85,7 @@ private
       :country,
       :accessible,
       :unisex,
+      :public_access,
       :directions,
       :comment,
       :longitude,

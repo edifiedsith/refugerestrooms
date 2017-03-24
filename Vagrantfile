@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Ubuntu 14.04 base box
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = BOXNAME
-  #config.vm.box_download_checksum = 
+  #config.vm.box_download_checksum =
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.ssh.forward_agent = true
 
   # Share refuge repo in vagrant home folder
-  config.vm.synced_folder ".", "/vagrant/", type: "rsync",
+  config.vm.synced_folder ".", "/vagrant/", type: "virtualbox",
     rsync__exclude: ".bundle"
 
   # View virtualbox provider docs for more options

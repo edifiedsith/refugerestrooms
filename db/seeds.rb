@@ -17,6 +17,7 @@ Restroom.transaction do
       :state => row[5],
       :accessible => row[10],
       :unisex => row[2],
+      :public_access => row[13],
       :directions => row[11],
       :comment => row[12],
       :latitude => row[8],

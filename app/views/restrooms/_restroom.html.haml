@@ -1,8 +1,9 @@
 - unisex_class = restroom.unisex? ? '' : 'not_unisex'
 - accessible_class = restroom.accessible? ? '' : 'not_accessible'
 - changing_table_class = restroom.accessible? ? '' : 'no_changing_table'
+- public_access_class = restroom.public_access
 
-%div{ class: "listItem #{unisex_class} #{accessible_class} #{changing_table_class}",
+%div{ class: "listItem #{unisex_class} #{accessible_class} #{changing_table_class} #{public_access_class}",
           data: { id: restroom.id} }
   .listItemImage
     / image tag goes here
@@ -36,3 +37,12 @@
     - if restroom.changing_table?
       .changingTable
         %i.fa.fa-child.fa-3x
+    - if restroom.public_access=="open"
+      .publicRestroom
+        %i.fa.fa-users.fa-3x
+    - if restroom.public_access=="customer"
+      .customerRestroom
+        %i.fa.fa-usd.fa-3x
+    - if restroom.public_access=="keyed"
+      .keyedRestroom
+        %i.fa.fa-key.fa-3x

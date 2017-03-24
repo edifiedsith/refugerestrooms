@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018191859) do
+ActiveRecord::Schema.define(version: 20170321215711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
 
-  create_table "active_admin_comments", force: true do |t|
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
     t.string   "resource_id",   null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20151018191859) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "admin_users", force: true do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -50,23 +50,24 @@ ActiveRecord::Schema.define(version: 20151018191859) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "restrooms", force: true do |t|
+  create_table "restrooms", force: :cascade do |t|
     t.string   "name"
     t.string   "street"
     t.string   "city"
     t.string   "state"
-    t.boolean  "accessible", default: false
-    t.boolean  "unisex",     default: false
+    t.boolean  "accessible",     default: false
+    t.boolean  "unisex",         default: false
     t.text     "directions"
     t.text     "comment"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "downvote",   default: 0
-    t.integer  "upvote",     default: 0
+    t.integer  "downvote",       default: 0
+    t.integer  "upvote",         default: 0
     t.string   "country"
     t.boolean  "changing_table", default: false
+    t.integer  "public_access",  default: 0
   end
 
 end
