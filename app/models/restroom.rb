@@ -42,6 +42,7 @@ class Restroom < ActiveRecord::Base
   after_find :strip_slashes
 
   scope :accessible, -> { where(accessible: true) }
+  scope :changing_table, -> { where(changing_table: true) }
   scope :unisex, -> { where(unisex: true) }
   scope :public_access, -> {where(public_access: "open")}
 
