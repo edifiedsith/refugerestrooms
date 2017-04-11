@@ -43,7 +43,7 @@ class Restroom < ActiveRecord::Base
 
   scope :accessible, -> { where(accessible: true) }
   scope :unisex, -> { where(unisex: true) }
-  scope :public_access, -> {where(public_access: 1)}
+  scope :public_access, -> {where(public_access: "open")}
 
   scope :created_since, ->(date) { where("created_at >= ?", date) }
   scope :updated_since, ->(date) { where("updated_at >= ?", date) }

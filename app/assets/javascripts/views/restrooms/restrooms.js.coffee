@@ -23,8 +23,10 @@ $ ->
 
   $('#public_access_filter').click ->
     if $(this).hasClass("active")
+      $('.listItem.unknown').show()
       $('.listItem.customer').show()
       $('.listItem.keyed').show()
     else
+      $('.listItem.unknown').hide()
       $('.listItem.customer').hide()
       $('.listItem.keyed').hide()
